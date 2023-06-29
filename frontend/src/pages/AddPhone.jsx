@@ -39,7 +39,7 @@ function AddPhone() {
   };
 
   const valS = memoryValues.find((value) => value.memory === memory)?.valS;
-  const valM = ramValues.find((value) => value.ram === ram)?.valM;
+  const valM = ramValues.find((value) => value.ram === ram)?.valM || 0;
   const sum = valS + valM;
 
   let category = "";
@@ -54,6 +54,23 @@ function AddPhone() {
   } else if (sum >= 375) {
     category = "5 – Premium";
   }
+
+  const priceTable = [
+    { valMin: 0, valMax: 45, price: 5 },
+    { valMin: 45, valMax: 90, price: 15 },
+    { valMin: 90, valMax: 130, price: 30 },
+    { valMin: 130, valMax: 165, price: 50 },
+    { valMin: 165, valMax: 215, price: 75 },
+    { valMin: 215, valMax: 255, price: 100 },
+    { valMin: 255, valMax: 315, price: 125 },
+    { valMin: 375, valMax: Infinity, price: 150 },
+  ];
+
+  const productValue = priceTable.find(
+    (item) => sum >= item.valMin && sum <= item.valMax
+  );
+
+  const price = productValue ? productValue.price : null;
 
   return (
     <div className="AddPhoneCard">
@@ -92,7 +109,15 @@ function AddPhone() {
           </Select>
         </FormControl>
         <div style={{ margin: "40px" }} />
-        <div>Category : {category}</div>
+        <div className="CategoryContainer">Category : {category} </div>
+
+        {price && (
+          <div className="PriceContainer">
+            <span style={{ fontSize: "20px", fontWeight: "600" }}>
+              Prix: {price} €
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
