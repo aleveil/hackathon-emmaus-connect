@@ -24,9 +24,17 @@ app.use(
 
 // import and mount the API routes
 
-const router = require("./router");
+const authRouter = require("./routes/auth");
+const userRouter = require("./routes/users");
+const phoneRouter = require("./routes/phones");
+const securityMiddleware = require("./middleware/securityMiddleware");
+const isAdminMiddleware = require("./middleware/isAdminMiddleware");
 
-app.use(router);
+app.use("/login", authRouter);
+app.use(securityMiddleware);
+app.use("/phones", phoneRouter);
+app.use(isAdminMiddleware);
+app.use("/users", userRouter);
 
 // serve the `backend/public` folder for public resources
 
