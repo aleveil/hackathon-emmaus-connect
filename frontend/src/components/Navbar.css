@@ -48,6 +48,7 @@
     flex-wrap: nowrap; 
     text-align: center;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
   }
   
   .navbar-button svg {
@@ -56,6 +57,7 @@
   }
   .navbar-button:hover {
     background-color: rgba(0, 172, 176, 0.75);
+    text-decoration: none;
       }
   
   .navbar-button:focus {
@@ -69,6 +71,7 @@
   /* Additional Styles */
   .navbar-button:active {
     background-color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
   }
   
   .navbar-button:disabled {
@@ -90,3 +93,4 @@
     margin-right: 10px;
     margin-left: 30px;
   }
+
