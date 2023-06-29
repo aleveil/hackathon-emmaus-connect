@@ -49,7 +49,7 @@ function Login() {
               id="password"
             />
           </div>
-          <button type="submit">Connection</button>
+          <button type="submit">Connexion</button>
         </form>
       </div>
     </div>
