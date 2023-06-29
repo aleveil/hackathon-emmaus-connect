@@ -1,14 +1,12 @@
-import Home from "./pages/Home";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-import "./App.css";
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Home />
-      <p>coucou</p>
-    </div>
+    <main>
+      <Navbar />
+      <Outlet />
+    </main>
   );
 }
-
-export default App;
+// Si jamais l'utilisateur n'est pas connecté tu dois retourner automatiquement sur login
