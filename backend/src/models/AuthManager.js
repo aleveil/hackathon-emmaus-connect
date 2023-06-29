@@ -13,7 +13,7 @@ class AuthManager extends AbstractManager {
   }
 
   login({ username, password }) {
-    return this.connection
+    return this.database
       .query(`SELECT * FROM user WHERE username = ?`, [username])
       .then(async ([rows]) => {
         if (rows.length === 0) {
