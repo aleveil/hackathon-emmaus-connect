@@ -15,17 +15,17 @@ CREATE SCHEMA IF NOT EXISTS `emmaus_connect` DEFAULT CHARACTER SET utf8 ;
 USE `emmaus_connect` ;
 
 -- -----------------------------------------------------
--- Table `emmaus_connect`.`model`
+-- Table `emmaus_connect`.`phone`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `emmaus_connect`.`model` (
+CREATE TABLE IF NOT EXISTS `emmaus_connect`.`phone` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `brand` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
+  `model` VARCHAR(45) NOT NULL,
   `ram` VARCHAR(45) NOT NULL,
   `memory` VARCHAR(45) NOT NULL,
   `category` VARCHAR(15) NOT NULL,
   `price` VARCHAR(45) NOT NULL,
-  `screenSize` VARCHAR(45) NOT NULL,
+  `screen_size` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

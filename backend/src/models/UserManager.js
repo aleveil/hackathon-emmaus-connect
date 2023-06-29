@@ -77,11 +77,6 @@ class UserManager extends AbstractManager {
     }
 
     const keys = Object.keys(data);
-    for (const key in keys) {
-      if (keys[key] !== "roles") {
-        sqlQuery += `${keys[key]} = ?, `;
-      }
-    }
 
     keys.forEach((key) => {
       sqlQuery += `${key} = ?, `;
