@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
+const upload = require("../services/UploadHelper");
 const isAdminMiddleware = require("../middleware/isAdminMiddleware");
 
 const readPhoneController = require("../controllers/phoneControllers/ReadPhoneController");
@@ -13,8 +14,8 @@ const deletePhoneController = require("../controllers/phoneControllers/DeletePho
 router.get("/", readPhoneController);
 router.get("/:id", readOnePhoneController);
 router.use(isAdminMiddleware);
-router.put("/:id", updatePhoneController);
-router.post("/", createPhoneController);
+router.put("/:id", upload.single("image"), updatePhoneController);
+router.post("/", upload.single("image"), createPhoneController);
 router.delete("/:id", deletePhoneController);
 
 module.exports = router;
