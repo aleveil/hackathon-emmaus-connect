@@ -22,6 +22,10 @@ app.use(
   })
 );
 
+// serve the `backend/public` folder for public resources
+
+app.use(express.static(path.join(__dirname, "../public")));
+
 // import and mount the API routes
 
 const authRouter = require("./routes/auth");
@@ -35,10 +39,6 @@ app.use(securityMiddleware);
 app.use("/phones", phoneRouter);
 app.use(isAdminMiddleware);
 app.use("/users", userRouter);
-
-// serve the `backend/public` folder for public resources
-
-app.use(express.static(path.join(__dirname, "../public")));
 
 // serve REACT APP
 

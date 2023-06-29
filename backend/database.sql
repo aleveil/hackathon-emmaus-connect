@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `emmaus_connect`.`phone` (
   `category` VARCHAR(15) NOT NULL,
   `price` VARCHAR(45) NOT NULL,
   `screen_size` VARCHAR(45) NOT NULL,
+  `image` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
