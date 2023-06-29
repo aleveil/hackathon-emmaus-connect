@@ -71,24 +71,17 @@ class UserManager extends AbstractManager {
 
     // v Because of ESLint
     const data = body;
-
     if (data.password) {
       data.password = await passwordHasher(data.password);
     }
 
     const keys = Object.keys(data);
-    for (const key in keys) {
-      if (keys[key] !== "roles") {
-        sqlQuery += `${keys[key]} = ?, `;
-      }
-    }
 
     keys.forEach((key) => {
       sqlQuery += `${key} = ?, `;
     });
 
     sqlQuery = sqlQuery.slice(0, sqlQuery.length - 2);
-
     let sqlData = [];
 
     sqlData = [...Object.values(data), id];
