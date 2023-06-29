@@ -13,8 +13,11 @@ import {
 import { useEffect, useState } from "react";
 import ApiHelper from "../../services/ApiHelper";
 import DeleteModal from "../DeleteModal";
+import { useToken } from "../../context/TokenContext";
 
 export default function UserModal({ userId, open, handleClose, setLoadData }) {
+  const { token } = useToken();
+
   const [user, setUser] = useState({});
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -29,7 +32,7 @@ export default function UserModal({ userId, open, handleClose, setLoadData }) {
 
   useEffect(() => {
     setUser({});
-    ApiHelper(`/users/${userId}`, "get").then((res) =>
+    ApiHelper(`/users/${userId}`, "get", token).then((res) =>
       res.json().then((res2) => {
         const userData = {
           username: res2.username,
@@ -57,7 +60,7 @@ export default function UserModal({ userId, open, handleClose, setLoadData }) {
       ApiHelper(
         `/users/${userId}`,
         "put",
-        null,
+        token,
         JSON.stringify(dataToSend)
       ).then(() => {
         setLoadData((prev) => !prev);
@@ -83,7 +86,7 @@ export default function UserModal({ userId, open, handleClose, setLoadData }) {
   };
 
   const handleDeleteModalAction = () => {
-    ApiHelper(`/users/${userId}`, "delete").then(() => {
+    ApiHelper(`/users/${userId}`, "delete", token).then(() => {
       setLoadData((prev) => !prev);
       setIsDeleteModalOpen(false);
       handleClose();

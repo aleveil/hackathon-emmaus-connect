@@ -6,7 +6,6 @@ import PhoneList from "../pages/PhoneList";
 import UserList from "../pages/UserList";
 import Faq from "../pages/Faq";
 import ErrorPage from "../pages/ErrorPage";
-import DataGridUserMenu from "../components/User/DataGridUserMenu";
 
 const Routes = [
   {
@@ -29,10 +28,6 @@ const Routes = [
       {
         path: "/faq",
         element: <Faq />,
-      },
-      {
-        path: "/test",
-        element: <DataGridUserMenu />,
       },
     ],
   },

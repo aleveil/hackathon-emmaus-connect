@@ -2,10 +2,11 @@ const fs = require("fs");
 const { phone } = require("../../models");
 
 async function updatePhoneController(req, res) {
+  req.body.phone = JSON.parse(req.body.phone);
   // TODO validations (length, format...)
   if (req.file) {
-    if (req.body.image !== "unknownPhone.png") {
-      const path = `./public/phonePics/${req.body.image}`;
+    if (req.body.phone.image !== "unknownPhone.png") {
+      const path = `./public/phonePics/${req.body.phone.image}`;
 
       fs.unlink(path, (err) => {
         if (err) {
@@ -14,9 +15,9 @@ async function updatePhoneController(req, res) {
         // file removed
       });
     }
-    req.body.image = req.file.filename;
-  } else if (req.body.deletePic) {
-    const path = `./public/phonePics/${req.body.image}`;
+    req.body.phone.image = req.file.filename;
+  } else if (req.body.phone.deletePic) {
+    const path = `./public/phonePics/${req.body.phone.image}`;
 
     fs.unlink(path, (err) => {
       if (err) {
@@ -24,12 +25,12 @@ async function updatePhoneController(req, res) {
       }
       // file removed
     });
-    req.body.image = "unknownPhone.png";
-    delete req.body.deletePic;
+    req.body.phone.image = "unknownPhone.png";
+    delete req.body.phone.deletePic;
   }
 
   const { status, message } = await phone.update(
-    req.body,
+    req.body.phone,
     parseInt(req.params.id, 10)
   );
 

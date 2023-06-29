@@ -15,7 +15,7 @@ function Login() {
     event.preventDefault();
     if (username && password) {
       const data = JSON.stringify({ username, password });
-      await ApiHelper("login", "POST", null, data)
+      await ApiHelper("/login", "POST", null, data)
         .then((response) => response.json())
         .then((result) => {
           console.error(result.token);

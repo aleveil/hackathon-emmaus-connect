@@ -11,8 +11,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import ApiHelper from "../../services/ApiHelper";
+import { useToken } from "../../context/TokenContext";
 
 export default function UserAddModal({ open, handleClose, setLoadData }) {
+  const { token } = useToken();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -43,7 +46,7 @@ export default function UserAddModal({ open, handleClose, setLoadData }) {
   };
 
   const handleAdd = () => {
-    ApiHelper("/users", "post", null, JSON.stringify(formData)).then(() => {
+    ApiHelper("/users", "post", token, JSON.stringify(formData)).then(() => {
       setLoadData((prev) => !prev);
       resetForm();
       handleClose();
