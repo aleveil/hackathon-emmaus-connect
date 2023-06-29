@@ -1,10 +1,28 @@
 import React from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import ApiHelper from "../services/ApiHelper";
+import { useToken } from "../context/TokenContext";
 
 function Login() {
-  const handleSubmit = (event) => {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const { setToken } = useToken();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    if (username && password) {
+      const data = JSON.stringify({ username, password });
+      await ApiHelper("login", "POST", null, data)
+        .then((response) => response.json())
+        .then((result) => {
+          console.error(result.token);
+          return setToken(result.token);
+        })
+        .then(() => navigate("/"));
+    }
   };
 
   return (
@@ -15,11 +33,21 @@ function Login() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Identifiant:</label>
-            <input type="text" id="username" />
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+              id="username"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="password">Mot de passe:</label>
-            <input type="password" id="password" />
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              id="password"
+            />
           </div>
           <button type="submit">Connection</button>
         </form>
