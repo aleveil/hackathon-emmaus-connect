@@ -4,7 +4,7 @@ import "./Navbar.css";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonIcon from "@mui/icons-material/Person";
 import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useToken } from "../context/TokenContext";
 
@@ -31,15 +31,23 @@ function Navbar() {
           <img src={logo} alt="Logo" />
         </div>
         <div className="navbar-buttons">
-          <button type="button" className="navbar-button">
+          <NavLink
+            to="/add-phone"
+            className="navbar-button"
+            activeClassName="active"
+          >
             Ajouter un smartphone
-          </button>
-          <button type="button" className="navbar-button">
+          </NavLink>
+          <NavLink
+            to="/phone-list"
+            className="navbar-button"
+            activeClassName="active"
+          >
             Liste de téléphones
-          </button>
-          <button type="button" className="navbar-button">
+          </NavLink>
+          <NavLink to="/faq" className="navbar-button" activeClassName="active">
             FAQ
-          </button>
+          </NavLink>
         </div>
         {name && (
           <div className="user-info">
