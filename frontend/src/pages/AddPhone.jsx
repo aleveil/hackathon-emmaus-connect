@@ -63,6 +63,7 @@ function AddPhone() {
     { valMin: 165, valMax: 215, price: 75 },
     { valMin: 215, valMax: 255, price: 100 },
     { valMin: 255, valMax: 315, price: 125 },
+    { valMin: 315, valMax: 375, price: 140 },
     { valMin: 375, valMax: Infinity, price: 150 },
   ];
 
@@ -114,7 +115,7 @@ function AddPhone() {
         {price && (
           <div className="PriceContainer">
             <span style={{ fontSize: "20px", fontWeight: "600" }}>
-              Prix: {price} €
+              Prix : {price} €
             </span>
           </div>
         )}
