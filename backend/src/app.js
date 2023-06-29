@@ -26,9 +26,11 @@ app.use(
 
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
+const phoneRouter = require("./routes/phones");
 
 app.use("/login", authRouter);
 app.use("/users", userRouter);
+app.use("/phones", phoneRouter);
 
 // serve the `backend/public` folder for public resources
 

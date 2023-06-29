@@ -39,6 +39,11 @@ const AuthManager = require("./AuthManager");
 models.auth = new AuthManager();
 models.auth.setDatabase(pool);
 
+const PhoneManager = require("./PhoneManager");
+
+models.phone = new PhoneManager();
+models.phone.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 
