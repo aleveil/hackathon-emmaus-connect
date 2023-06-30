@@ -54,16 +54,28 @@ export default function Faq() {
               Cliquer sur les 3 points sur la colonne dont vous voulez faire la
               recherche.
               <br />
-              {/* Image 1 */}
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}/faqs/img1.png`}
+                alt=""
+              />
+              <br />
               <br />
               Cliquez sur 'Filter'.
               <br />
-              {/* Image 2 */}
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}/faqs/img2.png`}
+                alt=""
+              />
+              <br />
               <br />
               Taper ou sélectionner les infos que vous cherchez dans la 3è
               partie.
               <br />
-              {/* Image 3 */}
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}/faqs/img3.png`}
+                alt=""
+              />
+              <br />
               <br />
               /!\ VOUS NE POUVEZ FAIRE QU'UNE RECHERCHE À LA FOIS /!\
             </Typography>
@@ -85,9 +97,19 @@ export default function Faq() {
               <br />
               2è étape : Ouvrez sa page (en cliquant sur le petit oeil).
               <br />
-              {/* Image ???? */}
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}/faqs/img4.png`}
+                alt=""
+              />
+              <br />
               <br />
               3è étape : Rentrez la pondération.
+              <br />
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}/faqs/img5.png`}
+                alt=""
+              />
+              <br />
               <br />
               Et voilà votre prix estimé ;)
             </Typography>

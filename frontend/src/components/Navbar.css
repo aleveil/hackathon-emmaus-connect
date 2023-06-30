@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 .navbar-container {
-
   background-color: #ffffff;
   margin-bottom: 5px;
 }
-
 
 .navbar-frame {
   display: flex;
@@ -15,7 +13,6 @@
   box-shadow: 0px 3px 16px -9px #0000004d;
   height: 50px;
 }
-
 
 .navbar-logo img {
   transform: scale(0.8);

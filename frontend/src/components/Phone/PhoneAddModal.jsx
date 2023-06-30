@@ -80,15 +80,15 @@ export default function PhoneAddModal({ open, handleClose, setLoadData }) {
   ];
 
   const priceTable = [
-    { valMin: 0, valMax: 45, price: 5 },
-    { valMin: 45, valMax: 90, price: 15 },
-    { valMin: 90, valMax: 130, price: 30 },
-    { valMin: 130, valMax: 165, price: 50 },
-    { valMin: 165, valMax: 215, price: 75 },
-    { valMin: 215, valMax: 255, price: 100 },
-    { valMin: 255, valMax: 315, price: 125 },
-    { valMin: 315, valMax: 375, price: 140 },
-    { valMin: 375, valMax: Infinity, price: 150 },
+    { valMin: 0, valMax: 45, price: "5€" },
+    { valMin: 45, valMax: 90, price: "15€" },
+    { valMin: 90, valMax: 130, price: "30€" },
+    { valMin: 130, valMax: 165, price: "50€" },
+    { valMin: 165, valMax: 215, price: "75€" },
+    { valMin: 215, valMax: 255, price: "100€" },
+    { valMin: 255, valMax: 315, price: "125€" },
+    { valMin: 315, valMax: 375, price: "140€" },
+    { valMin: 375, valMax: Infinity, price: "150€" },
   ];
 
   const handleChange = (event) => {
@@ -263,7 +263,7 @@ export default function PhoneAddModal({ open, handleClose, setLoadData }) {
           )}
           {price && ram !== "-" && memory !== "-" && (
             <Typography variant="h4" color="initial">
-              Prix : {price} €
+              Prix : {price}
             </Typography>
           )}
         </div>
