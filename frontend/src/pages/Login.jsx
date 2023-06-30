@@ -15,7 +15,7 @@ function Login() {
     event.preventDefault();
     if (username && password) {
       const data = JSON.stringify({ username, password });
-      await ApiHelper("login", "POST", null, data)
+      await ApiHelper("/login", "POST", null, data)
         .then((response) => response.json())
         .then((result) => {
           console.error(result.token);
@@ -49,7 +49,7 @@ function Login() {
               id="password"
             />
           </div>
-          <button type="submit">Connection</button>
+          <button type="submit">Connexion</button>
         </form>
       </div>
     </div>

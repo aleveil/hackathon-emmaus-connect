@@ -1,7 +1,6 @@
 import React from "react";
 import App from "../App";
 import Login from "../pages/Login";
-import AddPhone from "../pages/AddPhone";
 import PhoneList from "../pages/PhoneList";
 import UserList from "../pages/UserList";
 import Faq from "../pages/Faq";
@@ -14,8 +13,8 @@ const Routes = [
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/add-phone",
-        element: <AddPhone />,
+        index: true,
+        element: <Faq />,
       },
       {
         path: "/phone-list",
@@ -24,10 +23,6 @@ const Routes = [
       {
         path: "/user-list",
         element: <UserList />,
-      },
-      {
-        path: "/faq",
-        element: <Faq />,
       },
     ],
   },

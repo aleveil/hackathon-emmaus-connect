@@ -4,17 +4,17 @@ import "./Navbar.css";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonIcon from "@mui/icons-material/Person";
 import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useToken } from "../context/TokenContext";
 
 function Navbar() {
   const { token, setToken } = useToken();
   let name = "";
-
+  let isAdmin = false;
   if (token) {
     const decodedToken = jwt_decode(token);
-    // console.log(token);
+    isAdmin = decodedToken.user.isAdmin;
     name = decodedToken.user.name;
   }
 
@@ -31,15 +31,23 @@ function Navbar() {
           <img src={logo} alt="Logo" />
         </div>
         <div className="navbar-buttons">
-          <button type="button" className="navbar-button">
-            Ajouter un smartphone
-          </button>
-          <button type="button" className="navbar-button">
-            Liste de téléphones
-          </button>
-          <button type="button" className="navbar-button">
-            FAQ
-          </button>
+          <NavLink to="/phone-list">
+            <button type="button" className="navbar-button">
+              Liste de téléphones
+            </button>
+          </NavLink>
+          {isAdmin === 1 && (
+            <NavLink to="/user-list">
+              <button type="button" className="navbar-button">
+                Liste d'utilisateurs
+              </button>
+            </NavLink>
+          )}
+          <NavLink to="/">
+            <button type="button" className="navbar-button">
+              FAQ
+            </button>
+          </NavLink>
         </div>
         {name && (
           <div className="user-info">
