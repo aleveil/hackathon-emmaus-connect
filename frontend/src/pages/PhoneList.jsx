@@ -4,6 +4,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
+// eslint-disable-next-line camelcase
+import jwt_decode from "jwt-decode";
 import ApiHelper from "../services/ApiHelper";
 import PhoneModal from "../components/Phone/PhoneModal";
 import { useToken } from "../context/TokenContext";
@@ -11,6 +13,11 @@ import PhoneAddModal from "../components/Phone/PhoneAddModal";
 
 export default function PhoneList() {
   const { token } = useToken();
+  let isAdmin = false;
+  if (token) {
+    const decodedToken = jwt_decode(token);
+    isAdmin = decodedToken.user.isAdmin;
+  }
 
   const [phones, setPhones] = useState([]);
   const [selectedPhoneId, setSelectedPhoneId] = useState(null);
@@ -103,18 +110,21 @@ export default function PhoneList() {
   ];
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box>
       {typeof phones === "object" ? (
         <div>
-          <Button
-            color="primary"
-            variant="contained"
-            startIcon={<AddIcon />}
-            onClick={() => setIsAddPhoneModalOpen(true)}
-          >
-            Ajouter un téléphone
-          </Button>
+          {isAdmin === 1 && (
+            <Button
+              color="primary"
+              variant="contained"
+              startIcon={<AddIcon />}
+              onClick={() => setIsAddPhoneModalOpen(true)}
+            >
+              Ajouter un téléphone
+            </Button>
+          )}
           <DataGrid
+            sx={{ height: "75vh", marginTop: "25px" }}
             rows={phones}
             columns={columns}
             initialState={{
