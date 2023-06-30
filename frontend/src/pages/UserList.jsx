@@ -86,6 +86,7 @@ export default function UserList() {
             Ajouter un utilisateur
           </Button>
           <DataGrid
+            sx={{ height: "75vh", marginTop: "25px" }}
             rows={users}
             columns={columns}
             initialState={{

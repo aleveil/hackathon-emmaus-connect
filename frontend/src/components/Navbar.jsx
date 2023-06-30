@@ -4,7 +4,7 @@ import "./Navbar.css";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonIcon from "@mui/icons-material/Person";
 import jwt_decode from "jwt-decode";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useToken } from "../context/TokenContext";
 
@@ -31,23 +31,23 @@ function Navbar() {
           <img src={logo} alt="Logo" />
         </div>
         <div className="navbar-buttons">
-          <Link to="/phone-list">
+          <NavLink to="/phone-list">
             <button type="button" className="navbar-button">
               Liste de téléphones
             </button>
-          </Link>
+          </NavLink>
           {isAdmin === 1 && (
-            <Link to="/user-list">
+            <NavLink to="/user-list">
               <button type="button" className="navbar-button">
                 Liste d'utilisateurs
               </button>
-            </Link>
+            </NavLink>
           )}
-          <Link to="/faq">
+          <NavLink to="/">
             <button type="button" className="navbar-button">
               FAQ
             </button>
-          </Link>
+          </NavLink>
         </div>
         {name && (
           <div className="user-info">
