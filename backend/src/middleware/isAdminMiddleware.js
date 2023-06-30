@@ -1,5 +1,5 @@
 function isAdminMiddleware(req, res, next) {
-  if (!req.payload.isAdmin) {
+  if (!req.payload.user.isAdmin) {
     return res.status(401).json("Unauthorized access");
   }
   return next();
