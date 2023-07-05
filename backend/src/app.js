@@ -35,9 +35,9 @@ const securityMiddleware = require("./middleware/securityMiddleware");
 const isAdminMiddleware = require("./middleware/isAdminMiddleware");
 
 app.use("/login", authRouter);
-app.use(securityMiddleware);
+app.use(securityMiddleware); // Comment this line when creating a new user
 app.use("/phones", phoneRouter);
-app.use(isAdminMiddleware);
+app.use(isAdminMiddleware); // Comment this line when creating a new user
 app.use("/users", userRouter);
 
 // serve REACT APP
